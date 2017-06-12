@@ -17,3 +17,4 @@ Store accounts in xml, csv and any SQL DB (in all 3 data storages)
 Tests should provide detailed log, make screenshots on failure and provide results in this format:
 
 Account |	Results(Passed\Failed) |	Failures reason
+https://github.com/malyura/EmailTest/blob/master/report.png
