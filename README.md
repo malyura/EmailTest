@@ -1,5 +1,5 @@
 Scenario:
-Manually create two e-mail boxes at tut.by
+Manually create two e-mail boxes
 Test steps:
 1.	Log in to acc1 from UI. 
 2.	Create letter and send it to acc2.
