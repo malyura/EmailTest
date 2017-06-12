@@ -18,5 +18,4 @@ Tests should provide detailed log, make screenshots on failure and provide resul
 
 Account |	Results(Passed\Failed) |	Failures reason
 
-![alt text](EmailTest/report.png) 
-https://github.com/malyura/EmailTest/blob/master/report.png
+![alt text](https://github.com/malyura/EmailTest/blob/master/report.png)
