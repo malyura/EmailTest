@@ -11,14 +11,11 @@ namespace EmailTest
     public class Report
     {
 
-        public string TakeScreenshot(IWebDriver driver, string nameScreen)   //метод для снятия скриншота при неудачном тесте
+        public void TakeScreenshot(IWebDriver driver, string nameScreen)   //метод для снятия скриншота при неудачном тесте
         {
-            string dirScreen = Directory.CreateDirectory("screen").FullName;
             ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
-            string saveLocation = Path.Combine(dirScreen, nameScreen);
-            screenshot.SaveAsFile(saveLocation, ImageFormat.Png);
-            return Path.GetFullPath(saveLocation);
+            screenshot.SaveAsFile(nameScreen, ImageFormat.Png);
         }
 
 

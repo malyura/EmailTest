@@ -13,7 +13,7 @@ namespace EmailTest
         private static Logger logger = LogManager.GetCurrentClassLogger();
         bool iExecTestGood = false; // переменная для проверки успешности теста
         string url = "https://mail.yandex.by/";
-        Report r = new Report();
+        Report rep = new Report();
         int countCase = 0;  //Счетчик тест-кейсов
 
         [Test, TestCaseSource("GetData")]
@@ -21,7 +21,6 @@ namespace EmailTest
         {
             try
             {
-
                 AccountPage ap = new AccountPage(driver);   //создаем новый экземпляр класса AccountPage 
                 MailPage mp = ap.logInToAccount(acc_sender, pass_sender); //выполняем метод logInToYourAccount который вернет нам экземпляр mg класса MailPage
                 Assert.AreEqual(acc_sender, mp.getEmailFromProfile());   //проверка email владельца профиля
@@ -40,15 +39,16 @@ namespace EmailTest
                 mp.clickPresentMailsLink();   //вход во входящие
                 Assert.True(mp.getTextFromNoMailsMessage(), "No messages in the inbox");   //проверка есть ли во входящих письма
                 Assert.True(mp.checkMail(acc_sender, subject), "Message not found");  //проверка есть ли письмо от отправителя
-                r.getReport("Sender: " + acc_sender + " Receiver: " + acc_receiver, "Passed", countCase);  //формирование отчета об успешном тесте
+                rep.getReport("Sender: " + acc_sender + " Receiver: " + acc_receiver, "Passed", countCase);  //формирование отчета об успешном тесте
                 iExecTestGood = true;        //тест пройден успешно
             }
             catch (Exception e)
             {
 
                 logger.ErrorException(e.Message, e);     //запись ошибки в лог
-                string screenPath = r.TakeScreenshot(driver, @"d:\for_test\bug_" + acc_sender + "_" + acc_receiver + "_" + DateTime.Now.ToString("d.M.yy HH-mm-ss") + ".png");   //скриншот экрана
-                r.getReport("Sender: " + acc_sender + " Receiver: " + acc_receiver, "Failed", countCase, e.Message, screenPath);  //формирования отчета о неуспешном тесте
+                string screenPath = @"d:\for_test\bug_" + acc_sender + "_" + acc_receiver + "_" + DateTime.Now.ToString("d.M.yy HH-mm-ss") + ".png";
+                rep.TakeScreenshot(driver,screenPath);   //скриншот экрана
+                rep.getReport("Sender: " + acc_sender + " Receiver: " + acc_receiver, "Failed", countCase, e.Message, screenPath);  //формирования отчета о неуспешном тесте
                 iExecTestGood = false;     //тест не пройден
             }
             Assert.True(iExecTestGood, "Test falled");  //для верного отображения успешности/неуспешности теста
