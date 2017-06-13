@@ -68,7 +68,7 @@
     <Compile Include="MailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />
-    <Compile Include="SendEmailTest.cs" />
+    <Compile Include="EmailTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NLog.xsd">

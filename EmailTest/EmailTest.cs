@@ -7,7 +7,7 @@ using NLog;
 namespace EmailTest
 {
     [TestFixture]
-    class SendEmailTest : DataFromDB      //наследуемся от класса с нужным типом хранилища данных (DataFromXml, DataFromDB или DataFromCsv)
+    class EmailTest : DataFromDB      //наследуемся от класса с нужным типом хранилища данных (DataFromXml, DataFromDB или DataFromCsv)
     {
         IWebDriver driver;
         private static Logger logger = LogManager.GetCurrentClassLogger();
